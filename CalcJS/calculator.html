@@ -1,0 +1,117 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="calculator">
+            <div class="input" id="input"></div>
+            <div class="buttons">
+            <div class="operators">
+                <div onclick="inputOperator('+');">+</div>
+                <div onclick="inputOperator('-');">-</div>
+                <div onclick="inputOperator('*');">&times;</div>
+                <div onclick="inputOperator('/');">&divide;</div>
+            </div>
+            <div class="leftPanel">
+                <div class="numbers">
+                <div onclick="inputNum(7);">7</div>
+                <div onclick="inputNum(8);">8</div>
+                <div onclick="inputNum(9);">9</div>
+                </div>
+                <div class="numbers">
+                <div onclick="inputNum(4);">4</div>
+                <div onclick="inputNum(5);">5</div>
+                <div onclick="inputNum(6);">6</div>
+                </div>
+                <div class="numbers">
+                <div onclick="inputNum(1);">1</div>
+                <div onclick="inputNum(2);">2</div>
+                <div onclick="inputNum(3);">3</div>
+                </div>
+                <div class="numbers">
+                <div onclick="inputNum(0);">0</div>
+                <div id="dot" onclick="inputNum('.');">.</div>
+                <div id="clear" onclick="clearscrn();">C</div>
+                </div>
+            </div>
+            <div class="equal" id="result" onclick="result();">=</div>
+            </div>
+        </div>
+        <script type="text/javascript">
+
+        let hasDot=false;
+        let savenum=0;
+        let operator;
+        let equals;
+
+        function inputNum(num1)
+        {
+            console.log("inputNum() " + num1);
+            if (validateInput(num1)){
+                input.textContent = input.textContent+num1;
+            }
+        }
+
+        function clearscrn()
+        {
+            console.log("clearscreen() was called.");
+            input.textContent = "";
+            hasDot=false;
+            savenum = 0;
+        }
+
+        function validateInput(num1)
+        {
+            console.log("validateInput() was called.");
+            if(num1 == '.'){
+                console.log("Disabed was true.");
+                if(hasDot){
+                    return false;
+                }
+                hasDot=true;
+            }
+            return true;
+        }
+
+        function inputOperator(operation)
+        {
+            console.log("inputOperator() was called.");
+            savenum = input.textContent;
+            input.textContent = "";
+            operator = operation;
+            hasDot=false;
+        }
+        function result(num1)
+        {
+            console.log("result() was called.");
+            let total;
+            switch(operator){
+                case '+':
+                    console.log("operation is +");
+                    equals = parseFloat(savenum) + parseFloat(input.textContent);
+                    input.textContent = equals;
+                    break;
+                case '-':
+                    console.log("operation is -");
+                    equals = parseFloat(savenum) - parseFloat(input.textContent);
+                    input.textContent = equals;
+                    break;
+                case '*':
+                 console.log("operation is *");
+                 equals = parseFloat(savenum) * parseFloat(input.textContent);
+                    input.textContent = equals;
+                    break;
+                case '/':
+                    console.log("operation is /");
+                    equals = parseFloat(savenum) / parseFloat(input.textContent);
+                    input.textContent = equals;
+                    break;
+                default:
+            }
+            total = Math.round((total + Number.EPSILON) * 1000000000000) / 1000000000000
+        }
+        // Jevielyn's Code is here!
+
+        </script>
+      </body>
+</html>
