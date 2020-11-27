@@ -59,7 +59,7 @@
             hasDot=false;
             savenum = 0;
         }
-
+        //Validation of point
         function validateInput(num1)
         {
             console.log("validateInput() was called.");
@@ -81,7 +81,8 @@
             operator = operation;
             hasDot=false;
         }
-        function result(num1)
+        //Revised by: JPermalino
+        function result()
         {
             console.log("result() was called.");
             let total;
@@ -108,7 +109,11 @@
                     break;
                 default:
             }
-            total = Math.round((total + Number.EPSILON) * 1000000000000) / 1000000000000
+            //Fix floating decimal
+            total = Math.round((equals + Number.EPSILON) * 1000000000000) / 1000000000000
+            savedInput = "0";
+            input.textContent = "";
+            input.textContent = total;
         }
         // Jevielyn's Code is here!
 
